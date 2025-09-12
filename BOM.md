@@ -4,7 +4,7 @@
 |-|-|-|
 [Raft micro computer](https://docs.arduino.cc/hardware/due/)||
 |[Arduino Due](https://www.amazon.se/Arduino-AG-utvecklingskort-Due-A000062/dp/B08933P95J?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&psc=1&smid=ANU9KP01APNAG)|Microcontroller for underwater|7V-12V|
-[Turbidity sensor](https://www.rikasensor.com/rk500-07-ss-turbidity-sensor.html) [(alt2)](https://www.electrokit.com/grumlighetssensor-analog)|Measure water clarity||
+[Turbidity sensor](https://www.rikasensor.com/rk500-07-ss-turbidity-sensor.html) [(alt2)](https://www.electrokit.com/grumlighetssensor-analog) [Fernells](https://se.farnell.com/seeed-studio/101020752/turbidity-sensor-board-arduino/dp/4007740)|Measure water clarity||
 [Temperature sensor](https://www.elbutik.se/product.html/shelly-ds18b20-temperatursensor?msclkid=df07bc15ebfb17916f10d4d63b7faed5&utm_source=bing&utm_medium=cpc&utm_campaign=Viva+-+Shopping&utm_term=4587574838336733&utm_content=Ad+group+%231)|Measure water temperature||
 [Dissolved oxygen](https://se.farnell.com/dfrobot/sen0237-a/dev-kit-analog-dissolved-oxygen/dp/3517931)|Ammount of oxygen available to life||
 [PH sensor](https://se.farnell.com/dfrobot/sen0169/anal-ph-sensor-meter-pro-kit-arduino/dp/3517876)||
