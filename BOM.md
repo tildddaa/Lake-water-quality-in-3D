@@ -3,9 +3,9 @@
 |Component|Use|Draw|
 |-|-|-|
 [Raft micro computer](https://docs.arduino.cc/hardware/due/)||
-|[Arduino Due](https://docs.arduino.cc/hardware/due/)|Microcontroller for underwater|7V-12V|
+|[Arduino Due](https://www.amazon.se/Arduino-AG-utvecklingskort-Due-A000062/dp/B08933P95J?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&psc=1&smid=ANU9KP01APNAG)|Microcontroller for underwater|7V-12V|
 [Turbidity sensor](https://www.rikasensor.com/rk500-07-ss-turbidity-sensor.html)|Measure water clarity||
-[Temperature sensor](No link yet)|Measure water temperature||
+[Temperature sensor](https://www.elbutik.se/product.html/shelly-ds18b20-temperatursensor?msclkid=df07bc15ebfb17916f10d4d63b7faed5&utm_source=bing&utm_medium=cpc&utm_campaign=Viva+-+Shopping&utm_term=4587574838336733&utm_content=Ad+group+%231)|Measure water temperature||
 [Dissolved oxygen](https://se.farnell.com/dfrobot/sen0237-a/dev-kit-analog-dissolved-oxygen/dp/3517931)|Ammount of oxygen available to life||
 [PH sensor](https://www.tme.eu/se/details/df-sen0169/miljosensorer/dfrobot/sen0169/?brutto=1&currency=SEK&utm_source=google&utm_medium=cpc&utm_campaign=SZWECJA%20%5BPLA%5D%20CSS&gad_source=1&gad_campaignid=10592617092&gbraid=0AAAAADyylhKaLvBuarhv-r72DDDWdiH70&gclid=CjwKCAjwiY_GBhBEEiwAFaghvvAh3KSy9wSjFVwgDGqpyaT34C1E88sXrE3lENyJp1a6bsXzxXuPvBoCppYQAvD_BwE)||
 |[Conductivity sensor](No link yet)|Measure salt level||
