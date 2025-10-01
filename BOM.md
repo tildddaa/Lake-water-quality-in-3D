@@ -4,8 +4,12 @@
 |-|-|-|
 [Raft micro computer](https://docs.arduino.cc/hardware/due/)||
 |[Arduino Due](https://www.amazon.se/Arduino-AG-utvecklingskort-Due-A000062/dp/B08933P95J?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&psc=1&smid=ANU9KP01APNAG)|Microcontroller for underwater|7V-12V|
-[Turbidity sensor](https://www.rikasensor.com/rk500-07-ss-turbidity-sensor.html) [(alt2)](https://www.electrokit.com/grumlighetssensor-analog) [Farnells](https://se.farnell.com/seeed-studio/101020752/turbidity-sensor-board-arduino/dp/4007740)|Measure water clarity||
-[Temperature sensor](https://www.elbutik.se/product.html/shelly-ds18b20-temperatursensor?msclkid=df07bc15ebfb17916f10d4d63b7faed5&utm_source=bing&utm_medium=cpc&utm_campaign=Viva+-+Shopping&utm_term=4587574838336733&utm_content=Ad+group+%231) [Farnell](https://se.farnell.com/dfrobot/dfr0198/temp-sensor-probe-6mm-x-35mm-ss/dp/3517904)|Measure water temperature||
+[Raspberry Pi 5](https://se.farnell.com/raspberry-pi/rpi5-8gb-single/rpi-5-board-2-4ghz-8gb-arm-cortex/dp/4256000)|Onboard computer for sensor platform||
+[Batteries 1.2V (9 pcs)](https://www.digikey.se/sv/products/detail/energizer-battery-company/NH15BP-8/4477694)|Batteries for powering the sensor system||
+[Battery case](https://www.digikey.se/sv/products/detail/mpd-memory-protection-devices/BH28AAW/2439344)|||
+[Battery charger](https://www.digikey.se/sv/products/detail/sparkfun-electronics/16718/16915572)|||
+[Turbidity sensor](https://se.farnell.com/seeed-studio/101020752/turbidity-sensor-board-arduino/dp/4007740)|Measure water clarity||
+[Temperature sensor](https://se.farnell.com/dfrobot/dfr0198/temp-sensor-probe-6mm-x-35mm-ss/dp/3517904)|Measure water temperature||
 [Dissolved oxygen](https://se.farnell.com/dfrobot/sen0237-a/dev-kit-analog-dissolved-oxygen/dp/3517931)|Ammount of oxygen available to life||
 [PH sensor](https://se.farnell.com/dfrobot/sen0169/anal-ph-sensor-meter-pro-kit-arduino/dp/3517876)||
 |[TDS (Total Dissolved Solids)](https://se.farnell.com/dfrobot/sen0244/analogue-tds-sensor-meter-kit/dp/3517934)|Measure water cleanness||
