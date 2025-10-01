@@ -5,7 +5,7 @@
 [Raft micro computer](https://docs.arduino.cc/hardware/due/)||
 |[Arduino Due](https://www.amazon.se/Arduino-AG-utvecklingskort-Due-A000062/dp/B08933P95J?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&psc=1&smid=ANU9KP01APNAG)|Microcontroller for underwater|7V-12V|
 [Raspberry Pi 5](https://se.farnell.com/raspberry-pi/rpi5-8gb-single/rpi-5-board-2-4ghz-8gb-arm-cortex/dp/4256000)|Onboard computer for sensor platform||
-[Batteries 1.2V (9 pcs)](https://www.digikey.se/sv/products/detail/energizer-battery-company/NH15BP-8/4477694)|Batteries for powering the sensor system||
+[Batteries 1.2V ](https://www.digikey.se/sv/products/detail/energizer-battery-company/NH15BP-8/4477694)|Batteries for powering the sensor system||
 [Battery case](https://www.digikey.se/sv/products/detail/mpd-memory-protection-devices/BH28AAW/2439344)|||
 [Battery charger](https://www.digikey.se/sv/products/detail/sparkfun-electronics/16718/16915572)|||
 [Turbidity sensor](https://se.farnell.com/seeed-studio/101020752/turbidity-sensor-board-arduino/dp/4007740)|Measure water clarity||
