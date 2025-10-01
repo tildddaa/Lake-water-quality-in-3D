@@ -1,21 +1,5 @@
-/***************************************************
- DFRobot Gravity: Analog TDS Sensor / Meter For Arduino
- <https://www.dfrobot.com/wiki/index.php/Gravity:_Analog_TDS_Sensor_/_Meter_For_Arduino_SKU:_SEN0244>
- 
- Created 2017-8-22
- By Jason <jason.ling@dfrobot.com@dfrobot.com>
- 
- GNU Lesser General Public License.
- See <http://www.gnu.org/licenses/> for details.
- All above must be included in any redistribution
- 
- /***********Notice and Trouble shooting***************
- 1. This code is tested on Arduino Uno and Leonardo with Arduino IDE 1.0.5 r2 and 1.8.2.
- 2. More details, please click this link: <https://www.dfrobot.com/wiki/index.php/Gravity:_Analog_TDS_Sensor_/_Meter_For_Arduino_SKU:_SEN0244>
- ****************************************************/
-
 #define TdsSensorPin A1
-#define VREF 5.0      // analog reference voltage(Volt) of the ADC
+#define VREF 3.3      // analog reference voltage(Volt) of the ADC
 #define SCOUNT  30           // sum of sample point
 int analogBuffer[SCOUNT];    // store the analog value in the array, read from ADC
 int analogBufferTemp[SCOUNT];
@@ -26,6 +10,7 @@ void setup()
 {
     Serial.begin(115200);
     pinMode(TdsSensorPin,INPUT);
+    analogReadResolution(12);
 }
 
 void loop()
@@ -45,7 +30,7 @@ void loop()
       printTimepoint = millis();
       for(copyIndex=0;copyIndex<SCOUNT;copyIndex++)
         analogBufferTemp[copyIndex]= analogBuffer[copyIndex];
-      averageVoltage = getMedianNum(analogBufferTemp,SCOUNT) * (float)VREF / 1024.0; // read the analog value more stable by the median filtering algorithm, and convert to voltage value
+      averageVoltage = getMedianNum(analogBufferTemp,SCOUNT) * (float)VREF / 4096.0; // read the analog value more stable by the median filtering algorithm, and convert to voltage value
       float compensationCoefficient=1.0+0.02*(temperature-25.0);    //temperature compensation formula: fFinalResult(25^C) = fFinalResult(current)/(1.0+0.02*(fTP-25.0));
       float compensationVolatge=averageVoltage/compensationCoefficient;  //temperature compensation
       tdsValue=(133.42*compensationVolatge*compensationVolatge*compensationVolatge - 255.86*compensationVolatge*compensationVolatge + 857.39*compensationVolatge)*0.5; //convert voltage value to tds value
