@@ -1,13 +1,4 @@
-/*
-# This sample codes is for testing the pH meter V1.0.
- # Editor : YouYou
- # Date   : 2013.10.12
- # Ver    : 0.1
- # Product: pH meter
- # SKU    : SEN0161
-*/
-
-#define SensorPin 0          //pH meter Analog output to Arduino Analog Input 0
+#define SensorPin A0          //pH meter Analog output to Arduino Analog Input 0
 unsigned long int avgValue;  //Store the average value of the sensor feedback
 float b;
 int buf[10],temp;
@@ -15,8 +6,9 @@ int buf[10],temp;
 void setup()
 {
   pinMode(13,OUTPUT);  
-  Serial.begin(9600);  
+  Serial.begin(115200);  
   Serial.println("Ready");    //Test the serial monitor
+  analogReadResolution(12);
 }
 void loop()
 {
@@ -40,7 +32,7 @@ void loop()
   avgValue=0;
   for(int i=2;i<8;i++)                      //take the average value of 6 center sample
     avgValue+=buf[i];
-  float phValue=(float)avgValue*5.0/1024/6; //convert the analog into millivolt
+  float phValue=(float)avgValue*3.3/4096/6; //convert the analog into millivolt
   phValue=3.5*phValue;                      //convert the millivolt into pH value
   Serial.print("    pH:");  
   Serial.print(phValue,2);
