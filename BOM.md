@@ -20,7 +20,7 @@
 |[Bulkhead Seal](https://bluerobotics.com/store/cables-connectors/penetrators/wlp-vp/)|To expose sensor to water, can handle 1000m depth||
 |[SBC Buck converter: Diode](https://www.digikey.se/sv/products/detail/smc-diode-solutions/31DQ03/12142340)|Schottky diode||
 |[SBC Buck converter: Inductor L1](https://www.digikey.se/sv/products/detail/pulse-electronics/PE-53115NL/2266016)|Designed for LM2574||
-|[SBC Buck converter: Output capacitor C_out](https://www.digikey.se/sv/products/detail/panasonic-electronic-components/EEV-FK1V681Q/396277)|Aluminium electrolyte capacitor||
+|[SBC Buck converter: Output capacitor C_out](https://www.digikey.se/sv/products/detail/panasonic-electronic-components/EEE-FT1V681UP/7560209)|Aluminium electrolyte capacitor||
 |[SBC Buck converter: Input capacitor C_in](https://www.digikey.se/sv/products/detail/w%C3%BCrth-elektronik/865080343009/5728014)|Electrolytic capacitor||
 |[SBC Buck converter: LM2574](https://www.digikey.se/sv/products/detail/texas-instruments/LM2574HVM-ADJ-NOPB/308011)|Switcher||
 
