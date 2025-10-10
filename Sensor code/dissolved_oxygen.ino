@@ -2,8 +2,8 @@
 
 #define DO_PIN A1
 
-#define VREF 5000    //VREF (mv)
-#define ADC_RES 1024 //ADC Resolution
+#define VREF 3300    //VREF (mv)
+#define ADC_RES 4096 //ADC Resolution
 
 //Single-point calibration Mode=0
 //Two-point calibration Mode=1
