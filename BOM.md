@@ -23,4 +23,6 @@
 |[SBC Buck converter: Output capacitor C_out](https://www.digikey.se/sv/products/detail/panasonic-electronic-components/EEE-FT1V681UP/7560209)|Aluminium electrolyte capacitor||
 |[SBC Buck converter: Input capacitor C_in](https://www.digikey.se/sv/products/detail/w%C3%BCrth-elektronik/865080343009/5728014)|Electrolytic capacitor||
 |[SBC Buck converter: LM2574](https://www.digikey.se/sv/products/detail/texas-instruments/LM2574M-ADJ-NOPB/212609)|Switcher||
+|[Stepmotor: 42BYGHM809](https://www.electrokit.com/stegmotor-0.90.41nm-bipolar?gad_source=1&gad_campaignid=17338847491&gbraid=0AAAAAD_OrGN0Xt-1ZuvYH1Pjt3kjsAX-x&gclid=Cj0KCQiAiKzIBhCOARIsAKpKLAMaXfz63mRY6ZiqTAR_Q3y5l7E4MAesszeU07BuEF7EYWXphvr5yMEaAvhrEALw_wcB)|Stepmotor||
+
 
