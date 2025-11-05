@@ -26,6 +26,6 @@
 |[Stepper motor: 42BYGHM809](https://www.electrokit.com/stegmotor-0.90.41nm-bipolar?gad_source=1&gad_campaignid=17338847491&gbraid=0AAAAAD_OrGN0Xt-1ZuvYH1Pjt3kjsAX-x&gclid=Cj0KCQiAiKzIBhCOARIsAKpKLAMaXfz63mRY6ZiqTAR_Q3y5l7E4MAesszeU07BuEF7EYWXphvr5yMEaAvhrEALw_wcB)|Stepper motor||
 |[Stepper motor driver: TB6600](https://opencircuit.se/product/tb6600-stepper-motor-driver)|Stepper motor driver||
 |Turbidity Sensor|Components||
-|[IR LED : Micro Eye Module](https://se.rs-online.com/web/p/ir-leds/2269535)|
-|[Photodiode : TEMD5110X01 VISHAY](https://www.digikey.se/en/products/detail/vishay-semiconductor-opto-division/TEMD5110X01/1681182)|
+|[IR LED : Micro Eye Module](https://se.rs-online.com/web/p/ir-leds/2269535)| Infrared Light Emitter||
+|[Photodiode : TEMD5110X01 VISHAY](https://www.digikey.se/en/products/detail/vishay-semiconductor-opto-division/TEMD5110X01/1681182)|Infrared Light Detector||
 
