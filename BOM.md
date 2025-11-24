@@ -10,10 +10,11 @@
 [Battery charger](https://www.digikey.se/sv/products/detail/sparkfun-electronics/16718/16915572)|||
 [Turbidity sensor](https://se.farnell.com/seeed-studio/101020752/turbidity-sensor-board-arduino/dp/4007740)|Measure water clarity||
 [Temperature sensor](https://se.farnell.com/dfrobot/dfr0198/temp-sensor-probe-6mm-x-35mm-ss/dp/3517904)|Measure water temperature||
-[Dissolved oxygen](https://se.farnell.com/dfrobot/sen0237-a/dev-kit-analog-dissolved-oxygen/dp/3517931)|Ammount of oxygen available to life||
+[Dissolved oxygen](https://se.farnell.com/dfrobot/sen0237-a/dev-kit-analog-dissolved-oxygen/dp/3517931)|Amount of oxygen available to life||
 [PH sensor](https://se.farnell.com/dfrobot/sen0169/anal-ph-sensor-meter-pro-kit-arduino/dp/3517876)||5 V, 7 mA|
 |[TDS (Total Dissolved Solids)](https://se.farnell.com/dfrobot/sen0244/analogue-tds-sensor-meter-kit/dp/3517934)|Measure water cleanness||
 |[Hall effect sensor](https://www.electrokit.com/tlv49645-sip-3-hall-effektsensor-digital?gad_source=1&gad_campaignid=17338847491&gbraid=0AAAAAD_OrGN7ekLvdRKENoxCQ38xOgkfL&gclid=CjwKCAjwiY_GBhBEEiwAFaghvvtc5-3xuZx12bOuwTdUgIruGaBNhWvSB5BtiQO6VNAnJ_LaX2MxmBoCMSQQAvD_BwE) |Calculate depth of sensor platform||
+|[Pressure sensor](https://www.digikey.com/en/products/detail/dfrobot/SEN0257/8341836) |Placed on the sensor platform to see where to measure and depth of measurment||
 |Pulley|Lower sensor platform||
 |[DC motor](https://www.biltema.se/bil---mc/lasta-och-dra/transporttillbehor/elektriska-vinschar/elvinsch-12-v-907-kg-2000042426?utm_source=google&utm_medium=cpc&utm_campaign=p-shopping-LIA-mid&gad_source=1&gad_campaignid=1603792037&gbraid=0AAAAADowiYi8V4ggsYYD4R_vxDRMR9FQR&gclid=Cj0KCQjwoP_FBhDFARIsANPG24PgOhgRuM1j2egWvMcDXaO6lrkzRsuYV2femD6pD6_SUT8Prufzs9IaAtKREALw_wcB)|Motor for pulley||
 |[Water Proof Casing](https://bluerobotics.com/store/watertight-enclosures/wte-vp/)|Can handle up to 1000m depth||
