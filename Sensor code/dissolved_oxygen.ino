@@ -19,6 +19,8 @@
 #define CAL2_V (1300) //mv
 #define CAL2_T (15)   //℃
 
+#define DO_OFFSET 0.2325 // mg/L added after calibration
+
 const uint16_t DO_Table[41] = {
     14460, 14220, 13820, 13440, 13090, 12740, 12420, 12110, 11810, 11530,
     11260, 11010, 10770, 10530, 10300, 10080, 9860, 9660, 9460, 9270,
@@ -52,10 +54,14 @@ void loop()
   ADC_Raw = analogRead(DO_PIN);
   ADC_Voltage = uint32_t(VREF) * ADC_Raw / ADC_RES;
 
+  float DO_raw = readDO(ADC_Voltage, Temperaturet)/1000;
+  float DO_corrected = DO_raw + DO_OFFSET;
+
   Serial.print("Temperaturet:\t" + String(Temperaturet) + "\t");
   Serial.print("ADC RAW:\t" + String(ADC_Raw) + "\t");
   Serial.print("ADC Voltage:\t" + String(ADC_Voltage) + "\t");
   Serial.println("DO:\t" + String(readDO(ADC_Voltage, Temperaturet)) + "\t");
+  Serial.print(DO_corrected);
 
   delay(1000);
 }
