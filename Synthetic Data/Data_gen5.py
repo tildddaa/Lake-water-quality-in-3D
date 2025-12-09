@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-lat_min, lat_max = 60.640, 60.650 #northern europe lake
+lat_min, lat_max = 60.640, 60.650
 lon_min, lon_max = 17.840, 17.850
 num_lat = 15
 num_lon = 15
@@ -10,7 +10,7 @@ np.random.seed(42)
 
 lats = np.linspace(lat_min, lat_max, num_lat)
 lons = np.linspace(lon_min, lon_max, num_lon)
-lat_grid, lon_grid = np.meshgrid(lats, lons, indexing='ij') #lat_grid and lon_grid shape: (num_lat, num_lon)
+lat_grid, lon_grid = np.meshgrid(lats, lons, indexing='ij')
 
 lat_center = (lat_min + lat_max) / 2
 lon_center = (lon_min + lon_max) / 2
@@ -18,19 +18,19 @@ lat_radius = (lat_max - lat_min) / 2 * 0.9
 lon_radius = (lon_max - lon_min) / 2 * 0.7
 
 angle_grid = np.arctan2(lat_grid - lat_center, lon_grid - lon_center)
-radial_noise = 0.1 * np.sin(5 * angle_grid) + 0.05 * np.random.rand(*angle_grid.shape) #uneven edge
+radial_noise = 0.1 * np.sin(5 * angle_grid) + 0.05 * np.random.rand(*angle_grid.shape)
 
 ellipse_mask = (((lat_grid - lat_center)/(lat_radius*(1+radial_noise)))**2 +
-                ((lon_grid - lon_center)/(lon_radius*(1+radial_noise)))**2) <= 1 #mask for points inside the ellipse
+                ((lon_grid - lon_center)/(lon_radius*(1+radial_noise)))**2) <= 1
 
 max_depth = 11
 min_depth = 1.5
 dist_center_norm = np.sqrt(((lat_grid - lat_center)/lat_radius)**2 +
                            ((lon_grid - lon_center)/lon_radius)**2)
 dist_center_norm = np.clip(dist_center_norm, 0, 1)
-depth_map = min_depth + (1 - dist_center_norm) * (max_depth - min_depth) #depth decreases towards edges
+depth_map = min_depth + (1 - dist_center_norm) * (max_depth - min_depth)
 
-def noise(std): return np.random.normal(0, std) # Gaussian noise generator
+def noise(std): return np.random.normal(0, std)
 
 
 data = []
@@ -45,17 +45,16 @@ for i in range(num_lat):
         
         for depth in depths:
             
-            # Temperature (depth dependent + sensor noise)
-            if depth<=4: # shallow layer
-                gradient=0.05
-                T_true = 18 - gradient * depth + noise(0.01)
-            elif 4<depth<=8: # thermocline 
-                gradient=1.5
-                T_true = 18 - gradient * depth + noise(0.01)
-            else: # deep layer
-                gradient=0.005
-                T_true = 4 - gradient * depth + noise(0.01)
-
+            # Temperature (smooth transition using tanh for continuous)
+            # Surface: 18°C, Deep: 4°C, with logical thermocline gradient
+            T_surface = 18.0  # Temperature at surface
+            T_deep = 4.0      # Temperature at deep layer
+            thermocline_center = 6.0  # Center of thermocline
+            thermocline_width = 2.5   # Controls steepness of transition
+            
+            # Smooth S-curve transition
+            T_true = T_deep + (T_surface - T_deep) * 0.5 * (1 - np.tanh((depth - thermocline_center) / thermocline_width))
+            T_true += noise(0.01)
             T = T_true + noise(0.05)
 
             # pH (depth + temperature correlation)
@@ -77,7 +76,7 @@ for i in range(num_lat):
             TDS_true = TDS0 / (1 + 0.02 * (T - 25))
             TDS = TDS_true + noise(10)
 
-            num_sats = np.random.randint(7, 15) # realistic GPS satellite count
+            num_sats = np.random.randint(7, 15)
 
             data.append([
                 lat_grid[i, j], lon_grid[i, j], depth,
@@ -94,4 +93,4 @@ df = pd.DataFrame(data, columns=[
 print(df.head())
 print("Total rows:", df.shape[0])
 
-df.to_csv("synthetic_realistic_final11.csv", index=False) # Save to CSV file to mimic real data storage
+df.to_csv("synthetic_lake_final.csv", index=False)
