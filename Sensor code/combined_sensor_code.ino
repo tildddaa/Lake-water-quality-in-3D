@@ -1,7 +1,25 @@
 #include <OneWire.h>
+// Pressure sensor
+const float OffSet = 0.491 ; // from calibration
+float P;
+
+#define Pressure_samples 20
+#define pressurePin A3
+#define pressureThreshold 0.5
+#define pressureDelta 0.01
+#define pressureCount 10
+int pressureBuffer[Pressure_samples];
+int pressureBufferTemp[Pressure_samples];
+int pressureIndex = 0;
+int getMedianNum(int arr[], int len);
+float pressureVoltage = 0.0;
+float lastPressureVoltage = 0.0;
+int stableVoltageCount = 0;
+bool pressureOK = false;
+
 
 // Temp sensor
-int DS18S20_Pin = 49; // DS18S20 Signal pin on digital 49
+int DS18S20_Pin = 46; // DS18S20 Signal pin on digital 46
 OneWire ds(DS18S20_Pin);
 
 // TDS
@@ -33,6 +51,7 @@ uint16_t DO_Table[41] = {
 float phOffset = 0.12;
 
 // Timers
+unsigned long lastPressure = 0;
 unsigned long nowMillis = 0;
 unsigned long lastTemp = 0;
 unsigned long lastTDS = 0;
@@ -40,12 +59,14 @@ unsigned long lastPH = 0;
 unsigned long lastDO = 0;
 
 // Sampling intervals (start with 1 Hz, lower it if needed, now it reads the sensors every second)
+const int PRESSURE_INTERVAL = 1000;
 const int TEMP_INTERVAL = 1000;
 const int TDS_INTERVAL = 1000;
 const int PH_INTERVAL = 1000;
 const int DO_INTERVAL = 1000;
 
 // Function declarations
+float readPressureVoltage();
 float readTemperature();
 void readPH(float tempC);
 void readDOsensor(float tempC);
@@ -56,17 +77,50 @@ void setup() {
   Serial.begin(115200);
   analogReadResolution(12);
 
+  pinMode(pressurePin, INPUT);
   pinMode(PH_PIN, INPUT);     // Set sensor pins as input
   pinMode(TdsSensorPin, INPUT);
   pinMode(DO_PIN, INPUT);
 }
 
 void loop() {
+
   nowMillis = millis();
+
+  if (nowMillis - lastPressure >= PRESSURE_INTERVAL) {
+    lastPressure = nowMillis;
+    
+    pressureVoltage = readPressureVoltage();
+    P = (pressureVoltage - OffSet) * 400;
+
+    Serial.print("Pressure voltage: ");
+    Serial.print(pressureVoltage, 3);
+    Serial.println(" V");
+    Serial.print("Pressure: ");
+    Serial.print(P, 1);
+    Serial.println(" kPa");
+    Serial.println();
+
+    if (pressureVoltage > pressureThreshold) {
+      if (abs(pressureVoltage - lastPressureVoltage) <= pressureDelta) {
+        stableVoltageCount++;
+      } else {
+        stableVoltageCount = 0;
+      }
+
+      pressureOK = (stableVoltageCount >= pressureCount);
+
+    } else {
+      pressureOK = false;
+      stableVoltageCount = 0;
+    }
+
+    lastPressureVoltage = pressureVoltage;
+  }
 
   // Temperature
   static float tempC = 25.0;
-  if (nowMillis - lastTemp >= TEMP_INTERVAL) {
+  if (pressureOK && nowMillis - lastTemp >= TEMP_INTERVAL) {
     lastTemp = nowMillis;
     float t = readTemperature();
     if (t > -100) tempC = t;  // ignore invalid readings
@@ -76,7 +130,7 @@ void loop() {
   }
 
   // TDS
-  if (nowMillis - lastTDS >= TDS_INTERVAL) {
+  if (pressureOK && nowMillis - lastTDS >= TDS_INTERVAL) {
     lastTDS = nowMillis;
 
     // Add ADC sample
@@ -107,17 +161,32 @@ void loop() {
  
 
   // pH
-  if (nowMillis - lastPH >= PH_INTERVAL) {
+  if (pressureOK && nowMillis - lastPH >= PH_INTERVAL) {
     lastPH = nowMillis;
     readPH(tempC);
   }
 
   // Dissolved oxygen
-  if (nowMillis - lastDO >= DO_INTERVAL) {
+  if (pressureOK && nowMillis - lastDO >= DO_INTERVAL) {
     lastDO = nowMillis;
     readDOsensor(tempC);
   }
 }
+
+// Pressure function
+float readPressureVoltage() {
+  pressureBuffer[pressureIndex] = analogRead(pressurePin);
+  pressureIndex++;
+  if (pressureIndex >= Pressure_samples) pressureIndex = 0;
+
+  for (int i = 0; i < Pressure_samples; i++) {
+    pressureBufferTemp[i] = pressureBuffer[i];
+  }
+
+  int medianADC = getMedianNum(pressureBufferTemp, Pressure_samples);
+  return medianADC * VREF / 4096.0;
+}
+
 
 // Temperature function
 float readTemperature() {
@@ -178,24 +247,24 @@ int getMedianNum(int bArray[], int len) {
 
 // pH function
 void readPH(float tempC) {
-  int buf[10];
+  int phBuffer[10];
 
   for (int i = 0; i < 10; i++) {
-    buf[i] = analogRead(PH_PIN);
+    phBuffer[i] = analogRead(PH_PIN);
     delay(10);
   }
 
   // sort 10 readings and uses median averageing to reduce noise
   for (int i = 0; i < 9; i++)
     for (int j = i + 1; j < 10; j++)
-      if (buf[i] > buf[j]) {
-        int t = buf[i];
-        buf[i] = buf[j];
-        buf[j] = t;
+      if (phBuffer[i] > phBuffer[j]) {
+        int t = phBuffer[i];
+        phBuffer[i] = phBuffer[j];
+        phBuffer[j] = t;
       }
 
   long avg = 0;
-  for (int i = 2; i <= 7; i++) avg += buf[i];
+  for (int i = 2; i <= 7; i++) avg += phBuffer[i];
 
   float voltage = avg * VREF / 4096.0 / 6.0;
   float pH_raw = 3.5 * voltage + phOffset;
