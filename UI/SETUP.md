@@ -11,7 +11,7 @@
 1. **Clone or download the repository**
    ```bash
    git clone https://github.com/YOUR_USERNAME/lakewater-quality-3d.git
-   cd lakewater-quality-3d/User_Interface
+   cd lakewater-quality-3d/UI
    ```
 
 2. **Create a virtual environment** (recommended)
@@ -72,6 +72,3 @@
 - **RAM**: 8GB+ recommended for large datasets
 - **GPU**: Optional (CUDA support improves training speed)
 
-## Support
-
-For issues or feature requests, open an issue on GitHub or contact the development team.
