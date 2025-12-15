@@ -119,7 +119,7 @@ div.stNumberInput button:active {
 """, unsafe_allow_html=True)
 
 
-# sidebar navigation
+# sidebar nav (simple)
 with st.sidebar:
     selected = option_menu(
         menu_title="Main Menu",
@@ -201,16 +201,15 @@ elif selected == "Upload":
     # main tabs
     tab1, tab2, tab3 = st.tabs(["3D Plot", "Statistics", "Raw Data"])
 
-    # 3d scatter (depth inverted so down is down)
+    # 3d scatter (regular depth, not inverted)
     with tab1:
         st.markdown("### 3D Measurement Positions")
-        data["depth_inverted"] = -data["depth"]
 
         fig = px.scatter_3d(
             data,
             x="x",
             y="y",
-            z="depth_inverted",
+            z="depth",
             color=color_option,
             title=f"3D Positions colored by {color_option}" if color_option else "3D Positions",
             hover_data=numeric_cols,
@@ -222,7 +221,8 @@ elif selected == "Upload":
             scene=dict(
                 xaxis_title="X (m)",
                 yaxis_title="Y (m)",
-                zaxis_title="Depth (m)"
+                zaxis_title="Depth (m)",
+                zaxis=dict(autorange='reversed')
             )
         )
         st.plotly_chart(fig, use_container_width=True)
