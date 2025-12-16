@@ -10,8 +10,8 @@
 
 1. **Clone or download the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/lakewater-quality-3d.git
-   cd lakewater-quality-3d/UI
+   git clone https://github.com/tildddaa/Lake-water-quality-in-3D
+   cd Lake-water-quality-in-3D/UI
    ```
 
 2. **Create a virtual environment** (recommended)
