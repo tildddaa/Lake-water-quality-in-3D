@@ -14,9 +14,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 
 
-# --------------------------
-# Page Config and CSS
-# --------------------------
+
 st.set_page_config(
     page_title="Lake Water Quality Dashboard",
     page_icon="💧",
@@ -119,7 +117,7 @@ div.stNumberInput button:active {
 """, unsafe_allow_html=True)
 
 
-# sidebar nav (simple)
+# sidebar nav 
 with st.sidebar:
     selected = option_menu(
         menu_title="Main Menu",
@@ -135,7 +133,7 @@ with st.sidebar:
 # app title
 st.title("💧 Lake Water 3D Quality Dashboard")
 
-# home page (just a short intro)
+# home page 
 if selected == "Home":
     st.markdown(
         """
@@ -144,7 +142,7 @@ if selected == "Home":
         """
     )
 
-# upload page (bring your csv here)
+# upload page 
 elif selected == "Upload":
     st.subheader("Upload your lake CSV dataset")
     uploaded = st.file_uploader("", type="csv")
@@ -449,7 +447,7 @@ elif selected == "Upload":
 
 
 
-# predict page (train & analyze)
+# predict page 
 elif selected == "Predict":
     # Guard: avoid KeyError when no data uploaded
     if "data" not in st.session_state or st.session_state["data"] is None:
@@ -1030,7 +1028,7 @@ elif selected == "Predict":
 
                 col_th1, col_th2 = st.columns(2)
                 with col_th1:
-                    st.metric("Thermocline depth (m)", f"{thermocline_depth:.2f}" if thermocline_depth is not None else "N/A")
+                    st.metric("Center Thermocline depth (m)", f"{thermocline_depth:.2f}" if thermocline_depth is not None else "N/A")
                 with col_th2:
                     st.metric("Max temp gradient (°C/m)", f"{max_grad:.3f}" if max_grad is not None else "N/A")
 
@@ -1288,7 +1286,7 @@ elif selected == "Predict":
             
         #     st.plotly_chart(fig, use_container_width=True)
 
-
+#hepl page
 elif selected == "Help":
     st.header("📖 User Guide")
     st.markdown("---")
@@ -1454,12 +1452,5 @@ elif selected == "Help":
     - Thermocline depth varies seasonally (summer: shallow, winter: deep/mixed)
     - Hypoxia typically develops in deep water during summer stratification
     """)
-    
-    st.markdown("---")
-    st.markdown("### 📧 Support")
-    st.markdown("""
-    For technical support or questions about the dashboard, please contact:
-    - **Email:** support@lakewater-dashboard.com
-    - **Documentation:** [User Manual](https://docs.lakewater-dashboard.com)
-    """)
+   
 
